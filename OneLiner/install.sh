@@ -20,7 +20,7 @@ else
 fi
 
 #check for dependencies being installed
-dependencies=("docker" "docker-compose")
+dependencies=("docker")
 for dependency in "${dependencies[@]}"; do
     if ! command -v "$dependency" &> /dev/null; then
         echo "Error: $dependency is not installed."
