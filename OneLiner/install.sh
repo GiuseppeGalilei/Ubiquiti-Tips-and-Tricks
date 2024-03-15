@@ -82,7 +82,7 @@ for container_name in "${container_names[@]}"; do
     fi
 done
 
-docker-compose up -d
+docker compose up -d
 
 for container_name in "${container_names[@]}"; do
     while ! docker inspect -f '{{.State.Running}}' "$container_name" &>/dev/null; do
