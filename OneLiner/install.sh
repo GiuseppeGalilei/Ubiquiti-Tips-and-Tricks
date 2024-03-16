@@ -43,7 +43,6 @@ for dependency in "${dependencies[@]}"; do
         echo "Error: $dependency location results in Could not be found"
         exit 1
     fi
-    fi
 done
 #ask for installation directory, default to home
 read -p "Enter an absolute path to place the installation directory (or press Enter for the home folder): " user_input
