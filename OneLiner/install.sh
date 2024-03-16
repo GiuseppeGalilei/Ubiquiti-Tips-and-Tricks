@@ -25,6 +25,9 @@ dependencies=("docker")
 for dependency in "${dependencies[@]}"; do
     # Get the path to the dependency
     dependency_path=$(command -v "$dependency" 2>&1)
+
+    echo "dep"
+    echo $dependency_path
     
     if [ ! "$dependency_path" ] ; then
         echo "Error: $dependency not found"
