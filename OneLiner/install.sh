@@ -1,3 +1,4 @@
+#!/bin/bash
 clear
 echo -e "\e[0m\c"
 
