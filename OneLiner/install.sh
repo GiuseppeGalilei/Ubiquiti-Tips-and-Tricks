@@ -83,6 +83,15 @@ for container_name in "${container_names[@]}"; do
     fi
 done
 
+read -p "Debug, you can now modify the compose, press enter to continue: " user_input
+if [ "$user_input" = "" ]; then
+    echo "Enter pressed. Let's GO!"
+    echo ""
+else
+    echo "Exiting"
+    exit 1
+fi
+
 docker compose up -d
 
 # Check the exit code of the previous command
