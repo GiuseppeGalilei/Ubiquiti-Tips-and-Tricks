@@ -11,7 +11,7 @@ This will deploy both the Unifi Network Application and MongoDB container, along
 If you previously deployed containers unifi-db and unifi-network-application, they will be reinstalled.
 '
 read -p "Press enter to continue: " user_input
-if [ "$user_input" == "" ]; then
+if [ "$user_input" = "" ]; then
     echo "Enter pressed. Let's GO!"
     echo ""
 else
