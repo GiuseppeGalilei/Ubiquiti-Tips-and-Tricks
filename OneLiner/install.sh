@@ -33,7 +33,7 @@ for dependency in "${dependencies[@]}"; do
     if [ ! "$dependency_path" ] ; then
         echo "Error: $dependency not found"
         exit 1
-    elif [ ! test -x "$dependency_path" ]; then
+    elif [ ! -x "$dependency_path" ]; then
         echo "Error: $dependency is not executable."
         exit 1
     elif [[ $dependency_path == *"No such file or directory"* ]]; then
