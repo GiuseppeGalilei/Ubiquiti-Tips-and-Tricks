@@ -26,10 +26,10 @@ for dependency in "${dependencies[@]}"; do
     # Get the path to the dependency
     dependency_path=$(command -v "$dependency" 2>&1)
     
-    if [ -z "$dependency_path" ] || ! test -x "$dependency_path"; then
+    if [ ! "$dependency_path" ] ; then
         echo "Error: $dependency not found"
         exit 1
-    elif ! test -x "$dependency_path"; then
+    elif [! test -x "$dependency_path"]; then
         echo "Error: $dependency is not executable."
         exit 1
     elif [[ $dependency_path == *"No such file or directory"* ]]; then
