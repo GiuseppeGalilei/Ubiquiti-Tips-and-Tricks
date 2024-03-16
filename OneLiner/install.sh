@@ -23,13 +23,20 @@ fi
 #check for dependencies being installed
 dependencies=("docker")
 for dependency in "${dependencies[@]}"; do
-    # Check if the dependency is found and is executable
-    if ! command -v "$dependency" &> /dev/null || ! [ -x "$(command -v "$dependency")" ]; then
-        echo "Error: $dependency is not installed or not executable."
+    # Get the path to the dependency
+    dependency_path=$(command -v "$dependency" 2>&1)
+    
+    if [ -z "$dependency_path" ] || ! test -x "$dependency_path"; then
+        echo "Error: $dependency not found"
+        exit 1
+    elif ! test -x "$dependency_path"; then
+        echo "Error: $dependency is not executable."
+        exit 1
+    elif [[ $dependency_path == *"No such file or directory"* ]]; then
+        echo "Error: $dependency location results in No such file or directory"
         exit 1
     fi
 done
-
 #ask for installation directory, default to home
 read -p "Enter an absolute path to place the installation directory (or press Enter for the home folder): " user_input
 path=${user_input:-$HOME}
