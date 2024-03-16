@@ -33,12 +33,16 @@ for dependency in "${dependencies[@]}"; do
     if [ ! "$dependency_path" ] ; then
         echo "Error: $dependency not found"
         exit 1
-    elif [ ! -x "$dependency_path" ]; then
+    elif [ ! command -x "$dependency_path" ]; then
         echo "Error: $dependency is not executable."
         exit 1
     elif [[ $dependency_path == *"No such file or directory"* ]]; then
         echo "Error: $dependency location results in No such file or directory"
         exit 1
+    elif [[ $dependency_path == *"could not be found"* ]]; then
+        echo "Error: $dependency location results in Could not be found"
+        exit 1
+    fi
     fi
 done
 #ask for installation directory, default to home
