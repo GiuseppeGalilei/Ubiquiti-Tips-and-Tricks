@@ -23,8 +23,9 @@ fi
 #check for dependencies being installed
 dependencies=("docker")
 for dependency in "${dependencies[@]}"; do
-    if ! command -v "$dependency" &> /dev/null; then
-        echo "Error: $dependency is not installed."
+    # Check if the dependency is found and is executable
+    if ! command -v "$dependency" &> /dev/null || ! [ -x "$(command -v "$dependency")" ]; then
+        echo "Error: $dependency is not installed or not executable."
         exit 1
     fi
 done
