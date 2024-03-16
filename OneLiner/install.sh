@@ -85,6 +85,23 @@ done
 
 docker compose up -d
 
+# Check the exit code of the previous command
+if [ $? -ne 0 ]; then
+    echo "Error: "docker compose up" failed"
+    exit 1
+fi
+
+# Check docker-compose logs for any error messages
+error_logs=$(docker-compose logs --tail=50 | grep -i error)
+
+if [ -n "$error_logs" ]; then
+    echo "Error: Found error messages in "docker compose" logs:"
+    echo "$error_logs"
+    exit 1
+fi
+
+echo "docker compose up completed successfully"
+
 for container_name in "${container_names[@]}"; do
     while ! docker inspect -f '{{.State.Running}}' "$container_name" &>/dev/null; do
         echo "Waiting for containers to start..."
