@@ -20,6 +20,7 @@ else
     exit 1
 fi
 
+echo "dep"
 #check for dependencies being installed
 dependencies=("docker")
 for dependency in "${dependencies[@]}"; do
