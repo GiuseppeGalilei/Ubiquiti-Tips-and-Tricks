@@ -131,6 +131,8 @@ echo '
 Done!
 The dashboard will be available soon on port 8443.
 
+If you get error 404 don't worry, just wait a few more minutes for the dashboard to initialize.
+
 IMPORTANT! After Install:
 Because the network application runs inside Docker, by default it uses an IP address not accessible by other devices.
 So, for it to adopt other devices, it is required to use port `8080` and change the inform IP address. To do so, go in settings and search for the `Inform Host` option, there select override and set the address to that of the host.
